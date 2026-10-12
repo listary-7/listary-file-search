@@ -1,0 +1,80 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <!-- CsWin32's friendly overloads (out/ref/SafeHandle wrappers) are generated as unsafe code. -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="Config.Net" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" />
+    <PackageReference Include="NHotkey.Wpf" />
+    <PackageReference Include="NLog" />
+    <PackageReference Include="WPF-UI" />
+    <PackageReference Include="Microsoft.Windows.CsWin32">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EverythingSDK\EverythingSDK.vcxproj" />
+    <ProjectReference Include="..\EverythingToolbar.App\EverythingToolbar.App.csproj" />
+    <ProjectReference Include="..\EverythingToolbar.Core\EverythingToolbar.Core.csproj" />
+    <ProjectReference Include="..\EverythingToolbar.Platform\EverythingToolbar.Platform.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Using Include="EverythingToolbar.App" />
+    <Using Include="EverythingToolbar.App.Data" />
+    <Using Include="EverythingToolbar.App.Helpers" />
+    <Using Include="EverythingToolbar.App.Search" />
+    <Using Include="EverythingToolbar.App.Services" />
+    <Using Include="EverythingToolbar.Services" />
+    <Using Include="EverythingToolbar.Core.Helpers" />
+    <Using Include="EverythingToolbar.Core.Search" />
+    <Using Include="EverythingToolbar.Core.Services" />
+    <Using Include="EverythingToolbar.Platform.Helpers" />
+    <Using Include="EverythingToolbar.Platform.Search" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AboutBannerBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\AppIcon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\WinUIGallery\FilePicker.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\WinUIGallery\MenuFlyout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\WinUIGallery\IconElement.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="..\EverythingToolbar.Launcher\Icons\Dark.ico" Link="Icons\Dark.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="..\EverythingToolbar.Launcher\Icons\Light.ico" Link="Icons\Light.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
